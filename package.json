@@ -1,6 +1,6 @@
 {
   "name": "lambda-lambda-lambda",
-  "description": "AWS Lambda@Edge serverless application router.",
+  "description": "AWS CloudFront Lambda@Edge serverless application router.",
   "version": "0.6.0",
   "main": "src/Router.js",
   "scripts": {
