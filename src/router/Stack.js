@@ -10,7 +10,7 @@
 'use strict';
 
 // Local modules.
-const {isAsyncFunc, isPromise, isValidFunc, promiseEvents} = require('./Common');
+const {isAsyncFunc, isValidFunc, promiseEvents} = require('./Common');
 
 /**
  * Provides Stack item handler and methods.
@@ -121,7 +121,7 @@ class RouterStack {
         lastItem = index++ === funcs.length;
         nextItem = false;
 
-        if (isAsyncFunc(func) || isPromise(func) || hasReturn(func)) {
+        if (isAsyncFunc(func)) {
 
           // Asynchronous handling.
           promises.push(() => {
@@ -145,19 +145,5 @@ class RouterStack {
     }
   }
 };
-
-/**
- * Check if return statement exists. Assumes Promise
- * since there is no way to detect if a function
- * returns a Promise event without execution.
- *
- * @param {Function} func
- *   Route/Middleware Function.
- *
- * @return {Boolean}
- */
-function hasReturn(func) {
-  return (func && (typeof func === 'function' && /{\s+return\s+/.test(func.toString())));
-}
 
 module.exports = RouterStack;

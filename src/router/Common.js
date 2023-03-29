@@ -45,7 +45,7 @@ exports.isAsyncFunc = function(value) {
  * // true
  */
 exports.isPromise = function(obj) {
-  return (obj && (obj[Symbol.toStringTag] === 'Promise' || typeof obj.then === 'function' || /Promise/.test(obj.toString())));
+  return (obj && (obj[Symbol.toStringTag] === 'Promise' || typeof obj.then === 'function'));
 };
 
 /**

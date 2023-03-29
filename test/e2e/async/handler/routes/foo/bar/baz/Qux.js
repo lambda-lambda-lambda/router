@@ -13,7 +13,7 @@ module.exports = {
   /**
    * GET /api/<path>/<resourceId>
    */
-  get (req, res, id) {
+  async get (req, res, id) {
     return new Promise(function(resolve) {
       res.setHeader('X-Request-ID', id);
       res.setHeader('Content-Type', 'application/json');
@@ -25,7 +25,7 @@ module.exports = {
   /**
    * PUT /api/<path>/<resourceId>
    */
-  put (req, res, id) {
+  async put (req, res, id) {
     return new Promise(function(resolve) {
       res.setHeader('X-Request-ID', id);
       res.setHeader('Content-Type', 'application/json');
@@ -37,7 +37,7 @@ module.exports = {
   /**
    * PATCH /api/<path>/<resourceId>
    */
-  patch (req, res, id) {
+  async patch (req, res, id) {
     return new Promise(function(resolve) {
       res.setHeader('X-Request-ID', id);
       res.setHeader('Content-Type', 'application/json');
@@ -49,7 +49,7 @@ module.exports = {
   /**
    * DELETE /api/<path>/<resourceId>
    */
-  delete (req, res, id) {
+  async delete (req, res, id) {
     return new Promise(function(resolve) {
       res.setHeader('X-Request-ID', id);
       res.setHeader('Content-Type', 'application/json');
@@ -61,7 +61,7 @@ module.exports = {
   /**
    * POST /api/<path>/<resourceId>
    */
-  post (req, res, id) {
+  async post (req, res, id) {
     return new Promise(function(resolve) {
       res.setHeader('X-Request-ID', id);
       res.setHeader('Content-Type', 'application/json');
