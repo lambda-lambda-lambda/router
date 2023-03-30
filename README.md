@@ -1,6 +1,6 @@
 # lambda-lambda-lambda
 
-[![npm version](https://badge.fury.io/js/lambda-lambda-lambda.svg)](https://badge.fury.io/js/lambda-lambda-lambda) [![](https://img.shields.io/npm/dm/lambda-lambda-lambda.svg)](https://www.npmjs.com/package/lambda-lambda-lambda) [![Build Status](https://api.travis-ci.com/nuxy/lambda-lambda-lambda.svg?branch=master)](https://app.travis-ci.com/github/nuxy/lambda-lambda-lambda) [![Coverage](https://coveralls.io/repos/nuxy/lambda-lambda-lambda/badge.svg?branch=master)](https://coveralls.io/r/nuxy/lambda-lambda-lambda?branch=master)
+[![npm version](https://badge.fury.io/js/lambda-lambda-lambda.svg)](https://badge.fury.io/js/lambda-lambda-lambda) [![](https://img.shields.io/npm/dm/lambda-lambda-lambda.svg)](https://www.npmjs.com/package/lambda-lambda-lambda) [![Build Status](https://api.travis-ci.com/lambda-lambda-lambda/router.svg?branch=master)](https://app.travis-ci.com/github/lambda-lambda-lambda/router) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master)
 
 AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) serverless application router.
 
