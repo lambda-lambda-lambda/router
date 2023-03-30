@@ -12,7 +12,7 @@
 'use strict';
 
 // Local modules.
-const {getResourceId, isValidFunc, setFuncName} = require('./Common');
+const {getResourceId, isAsyncFunc, isValidFunc, setFuncName} = require('./Common');
 
 /**
  * Handle routing operations for the given Route.
@@ -86,18 +86,28 @@ module.exports = (router, route) => {
 
       // Add resource ID to Route as argument.
       const oldFunc = routeFunc;
-      routeFunc = (req, res) => {
 
-        // If resource doesn't exist..
-        if (resourceId) {
+      if (isAsyncFunc(oldFunc)) {
+
+        // Asynchronous handling.
+        routeFunc = async (req, res) => {
+          return await oldFunc(req, res, resourceId);
+        };
+      } else {
+
+        // Synchronous handling.
+        routeFunc = (req, res) => {
           return oldFunc(req, res, resourceId);
-        } else {
+        };
+      }
 
-          // .. send error response.
+      // .. send error response.
+      if (!resourceId) {
+        routeFunc = (req, res) => {
           res.setHeader('Cache-Control', 'max-age=0');
           res.status(404).send();
-        }
-      };
+        };
+      }
 
       entityType = 'resource';
     }
