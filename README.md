@@ -274,7 +274,7 @@ module.exports = {
 
 ### Asynchronous handler
 
-If you must use an explicit `Promise` or return a promised event, always declare your handler method as `async` function (see examples below).
+When using an explicit `Promise` that returns a promised event, always declare your handler method as `async` function (see examples below).
 
 ```javascript
 // .. appName/src/routes/foo.js
