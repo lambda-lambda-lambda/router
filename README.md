@@ -363,7 +363,7 @@ module.exports = async (req, res, next) => {
   if (await checkSession()) {
     req.plugin('session', true); // Passed down the chain.
   } else {
-    return Promise.reject()
+    return Promise.reject('Output to console');
   }
 
   // next() should be omitted, use Promise.reject().

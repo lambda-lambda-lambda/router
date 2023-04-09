@@ -3,6 +3,7 @@
 const event          = require(`${PACKAGE_ROOT}/test/event.json`);
 const chai           = require('chai');
 const chaiAsPromised = require('chai-as-promised');
+const sinon          = require('sinon');
 
 chai.use(chaiAsPromised);
 
@@ -261,6 +262,74 @@ describe('Stack module', function() {
             const promise = stack.exec(req, res);
 
             return expect(promise).to.be.rejectedWith(Error, /Middleware next\(\) is unsupported/);
+          });
+        });
+
+        describe('Promise.reject()', function() {
+          describe('with message', function() {
+            const stack = new Stack();
+
+            const func1 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+            };
+
+            Common.setFuncName(func1, 'middleware');
+
+            const func2 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+
+              return Promise.reject('Output to console');
+            };
+
+            Common.setFuncName(func2, 'middleware');
+
+            stack.middleware = [func1, func2];
+
+            const req = new Request(event.Records[0].cf.request, {});
+            const res = new Response({});
+
+            before(function() {
+              sinon.stub(console, 'info');
+            });
+
+            it('should resolve Promise', function() {
+              const promise = stack.exec(req, res);
+
+              return expect(promise).to.be.fulfilled;
+            });
+
+            it('should output to console', function() {
+              expect(console.info.calledWith('Output to console')).to.be.true;
+            });
+          });
+
+          describe('with Error', function() {
+            const stack = new Stack();
+
+            const func1 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+            };
+
+            Common.setFuncName(func1, 'middleware');
+
+            const func2 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+
+              return Promise.reject(new Error('Output to error'));
+            };
+
+            Common.setFuncName(func2, 'middleware');
+
+            stack.middleware = [func1, func2];
+
+            const req = new Request(event.Records[0].cf.request, {});
+            const res = new Response({});
+
+            it('should throw Error', function() {
+              const promise = stack.exec(req, res);
+
+              return expect(promise).to.be.rejectedWith(Error, /Output to error/);
+            });
           });
         });
       });

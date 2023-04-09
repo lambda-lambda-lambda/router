@@ -141,7 +141,14 @@ class RouterStack {
     });
 
     if (promises.length) {
-      return promiseEvents(promises);
+      return promiseEvents(promises)
+        .catch(err => {
+          if (err?.message) {
+            throw err;
+          } else if (err) {
+            console.info(err);
+          }
+        });
     }
   }
 };
