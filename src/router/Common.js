@@ -1,7 +1,7 @@
 /** @module router/Common */
 
 /**
- *  lambda-lambda-lambda
+ *  lambda-lambda-lambda/router
  *  AWS Lambda@Edge serverless application router.
  *
  *  Copyright 2021-2023, Marc S. Brooks (https://mbrooks.info)

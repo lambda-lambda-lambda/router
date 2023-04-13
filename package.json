@@ -1,5 +1,5 @@
 {
-  "name": "lambda-lambda-lambda",
+  "name": "@lambda-lambda-lambda/router",
   "description": "AWS CloudFront Lambda@Edge serverless application router.",
   "version": "0.6.2",
   "main": "src/Router.js",

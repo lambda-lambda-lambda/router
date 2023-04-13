@@ -1,10 +1,10 @@
-# lambda-lambda-lambda
+# L³ router
 
 [![npm version](https://badge.fury.io/js/lambda-lambda-lambda.svg)](https://badge.fury.io/js/lambda-lambda-lambda) [![](https://img.shields.io/npm/dm/lambda-lambda-lambda.svg)](https://www.npmjs.com/package/lambda-lambda-lambda) [![Build Status](https://api.travis-ci.com/lambda-lambda-lambda/router.svg?branch=master)](https://app.travis-ci.com/github/lambda-lambda-lambda/router) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master)
 
 AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) serverless application router.
 
-![lambda-lambda-lambda](https://raw.githubusercontent.com/nuxy/lambda-lambda-lambda/master/package.png)
+![lambda-lambda-lambda](https://raw.githubusercontent.com/lambda-lambda-lambda/router/master/package.png)
 
 ## Features
 
@@ -107,7 +107,7 @@ exports.handler = async (event) => {
 
 ## Common methods
 
-The following methods are supported based on the class context.  For further information please refer to the [JSDoc](#cli-options) generated [documentation](https://nuxy.github.io/lambda-lambda-lambda) which includes method `arguments`/`return` types and general usage examples.
+The following methods are supported based on the class context.  For further information please refer to the [JSDoc](#cli-options) generated [documentation](https://lambda-lambda-lambda.github.io/doc) which includes method `arguments`/`return` types and general usage examples.
 
 | Router Method               | Description                               |
 |-----------------------------|-------------------------------------------|
@@ -374,7 +374,7 @@ See [restfulApiHandler](https://github.com/lambda-lambda-lambda/example/tree/mas
 
 ## Testing
 
-How you handle this is entirely up to the test framework/runner you're using. For examples using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com), please refer to the [E2E tests](https://github.com/nuxy/lambda-lambda-lambda/tree/master/test/e2e/async) included with this package.
+How you handle this is entirely up to the test framework/runner you're using. For examples using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com), please refer to the [E2E tests](https://github.com/lambda-lambda-lambda/router/tree/master/test/e2e/async) included with this package.
 
 ## AWS requirements
 
