@@ -143,7 +143,7 @@ class RouterStack {
     if (promises.length) {
       return promiseEvents(promises)
         .catch(err => {
-          if (err?.message) {
+          if (err instanceof Error) {
             throw err;
           } else if (err) {
             console.info(err);
