@@ -27,6 +27,9 @@ const {
   setFuncName
 } = require('./router/Common');
 
+// Global variables.
+global.APP_ROOT = process.env.LAMBDA_TASK_ROOT || `${process.cwd()}/src`;
+
 /**
  * Provides HTTP request/response handling.
  */
