@@ -56,7 +56,7 @@ This package is maintained under the [Semantic Versioning](https://semver.org) g
 
 This package is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose.
 
-_@lambda-lambda-lambda/router_ is provided under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.php)
+_lambda-lambda-lambda/router_ is provided under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.php)
 
 [AWS](https://aws.amazon.com) is a registered trademark of Amazon Web Services, Inc.
 
