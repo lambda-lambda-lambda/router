@@ -1,6 +1,6 @@
 # L³ router
 
-[![npm version](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter.svg)](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter) [![](https://img.shields.io/npm/dm/@lambda-lambda-lambda/router.svg)](https://www.npmjs.com/package/@lambda-lambda-lambda/router) [![Build Status](https://api.travis-ci.com/lambda-lambda-lambda/router.svg?branch=master)](https://app.travis-ci.com/github/lambda-lambda-lambda/router) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master)
+[![npm version](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter.svg)](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter) [![](https://img.shields.io/npm/dm/@lambda-lambda-lambda/router.svg)](https://www.npmjs.com/package/@lambda-lambda-lambda/router) [![Build Status](https://api.travis-ci.com/lambda-lambda-lambda/router.svg?branch=master)](https://app.travis-ci.com/github/lambda-lambda-lambda/router) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master) [![Install size](https://packagephobia.com/badge?p=@lambda-lambda-lambda/router)](https://packagephobia.com/result?p=@lambda-lambda-lambda/router)
 
 AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) serverless application router.
 
