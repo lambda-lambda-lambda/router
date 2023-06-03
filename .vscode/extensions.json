@@ -7,7 +7,6 @@
     "liamhammett.inline-parameters",
     "ms-vscode-remote.remote-containers",
     "redhat.vscode-yaml",
-    "steoates.autoimport",
-    "searKing.preview-vscode"
+    "steoates.autoimport"
   ]
 }
