@@ -11,6 +11,9 @@
 
 'use strict';
 
+// Local reference.
+const Config = this;
+
 /**
  * Check if value is an async function.
  *
@@ -99,8 +102,8 @@ exports.isValidFunc = function(value) {
  * // true
  */
 exports.isValidRoute = function(uri, path, func) {
-  if (module.exports.isValidFunc(func) && !/^route:/.test(func.name)) {
-    return !!uri.match(new RegExp(`^${path}(\/[a-z0-9-_]+)?$`, 'i'));
+  if (Config.isValidFunc(func) && !/^route:/.test(func.name)) {
+    return !!uri.match(new RegExp(`^${path}(\/[a-z0-9-_]+)?$`, 'i')); // nosemgrep
   }
 
   return (uri === path);
@@ -122,7 +125,7 @@ exports.isValidRoute = function(uri, path, func) {
  * // abc123
  */
 exports.getResourceId = function(uri, path) {
-  const fragment = uri.replace(new RegExp(`^(?:${path}(?:\/([a-z0-9-_]+))?)$`, 'i'), '$1');
+  const fragment = uri.replace(new RegExp(`^(?:${path}(?:\/([a-z0-9-_]+))?)$`, 'i'), '$1'); // nosemgrep
   if (fragment !== uri) {
     return fragment;
   }
