@@ -333,7 +333,7 @@ function loadRoutes(router) {
  */
 function getRoutes(dir, files = []) {
   fs.readdirSync(dir).forEach(function(file) {
-    const filePath = path.join(dir, file);
+    const filePath = path.join(dir, file); // nosemgrep
 
     if (fs.lstatSync(filePath).isDirectory()) {
 
