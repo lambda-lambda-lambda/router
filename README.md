@@ -15,7 +15,7 @@ AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda
 - Open Source, [MIT licensed](https://github.com/lambda-lambda-lambda/router/blob/master/LICENSE), FREE.
 - Lightweight (**no dependencies**).
 
-### How does it work?
+## How does it work?
 
 In its most basic form the library provides helper methods that translate the [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) `origin-request` allowing you to handle response processing **without the need to construct complex Lambda dependent responses**.
 
