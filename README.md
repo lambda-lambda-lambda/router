@@ -15,6 +15,14 @@ AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda
 - Open Source, [MIT licensed](https://github.com/lambda-lambda-lambda/router/blob/master/LICENSE), FREE.
 - Lightweight (**no dependencies**).
 
+### How does it work?
+
+In its most basic form the library provides helper methods that translate the [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) `origin-request` allowing you to handle response processing **without the need to construct complex Lambda dependent responses**.
+
+To better visualize how L³ fits in the current AWS ecosystem the following high-level graph describes the _HTTP Request/Response lifecycle_ and role of each AWS provided service.
+
+![HTTP Request/Response lifecycle](https://raw.githubusercontent.com/lambda-lambda-lambda/manual/master/images/Request-Response-Lifecycle.png)
+
 ## Getting started
 
 The easiest way to created an application, without the need to [manually install](#manual-installation) this package, is to use the [L³ Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=Nuxy.vscode-lambda-lambda-lambda). Doing so allows you to..
