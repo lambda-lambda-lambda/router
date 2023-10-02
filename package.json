@@ -29,8 +29,8 @@
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.111",
-    "chai": "^4.3.7",
+    "@types/aws-lambda": "^8.10.122",
+    "chai": "^4.3.10",
     "chai-as-promised": "^7.1.1",
     "clone": "^2.1.2",
     "coveralls": "^3.1.1",
@@ -40,7 +40,7 @@
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
     "resnap": "^1.0.1",
-    "sinon": "^15.0.2"
+    "sinon": "^15.2.0"
   },
   "engines": {
     "node": ">=16.0.0"
