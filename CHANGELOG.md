@@ -15,3 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 ### Added
 
 - Enabled [Semgrep](https://semgrep.dev) SAST analyzer.
+
+## [0.7.4] - 2023-10-02
+
+## Updated
+
+- Main documentation (new section)
+- Development dependencies
