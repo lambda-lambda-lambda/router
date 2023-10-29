@@ -31,6 +31,22 @@ exports.isAsyncFunc = function(value) {
 };
 
 /**
+ * Check if value is an Object instance.
+ *
+ * @param {Object}
+ *   Object to check.
+ *
+ * @return {Boolean}
+ *
+ * @example
+ * const result = Utils.isObject({foo: 'bar'});
+ * // true
+ */
+exports.isObject = function(value) {
+  return typeof value === 'object' && Object.prototype.toString.call(value) === '[object Object]';
+};
+
+/**
  * Check if object is (or returns) Promise.
  *
  * @param {Object} obj

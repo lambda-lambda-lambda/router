@@ -25,6 +25,20 @@ describe('Utils module', function() {
       });
     });
 
+    describe('isObject', function() {
+      const result1 = Utils.isObject();
+      const result2 = Utils.isObject('foo');
+      const result3 = Utils.isObject(['foo']);
+      const result4 = Utils.isObject({foo: 'bar'});
+
+      it('should return value', function() {
+        expect(result1).to.be.false;
+        expect(result2).to.be.false;
+        expect(result3).to.be.false;
+        expect(result4).to.be.true;
+      });
+    });
+
     describe('isPromise', function() {
       const result1 = Utils.isPromise(new Promise(() => {}));
       const result2 = Utils.isPromise(new Object());

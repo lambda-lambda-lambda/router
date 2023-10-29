@@ -9,6 +9,9 @@
 
 'use strict';
 
+// Local modules.
+const {isObject} = require('./Utils');
+
 /**
  * Provides AWS CloudFront response instance and methods.
  *
@@ -128,7 +131,7 @@ class RouterResponse {
       send: arg => {
         if (Buffer.isBuffer(arg)) {
           this.status(code).data(arg);
-        } else if (Array.isArray(arg) || typeof arg === 'object') {
+        } else if (Array.isArray(arg) || isObject(arg)) {
           this.status(code).json(arg);
         } else if (arg) {
           this.status(code).text(arg);
