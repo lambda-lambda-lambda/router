@@ -19,20 +19,30 @@ describe('Stack module', function() {
   describe('Instance methods', function() {
     describe('add', function() {
       describe('middleware', function() {
-        const stack = new Stack();
-
-        const func = function(req, res, next) {};
-        const name = 'middleware';
-
-        Utils.setFuncName(func, name);
-
-        stack.add(func);
-
-        const result = stack.middleware;
-
         it('should return value', function() {
+          const stack = new Stack();
+
+          const func = function(req, res, next) {};
+          const name = 'middleware';
+
+          Utils.setFuncName(func, name);
+
+          stack.add(func);
+
+          const result = stack.middleware;
+
           expect(result[0]).to.be.an('function');
           expect(result[0].name).to.equal(name);
+        });
+
+        it('should not return value', function() {
+          const stack = new Stack();
+
+          stack.add({func: 'invalid'});
+
+          const result = stack.middleware;
+
+          expect(result[0]).to.be.undefined;
         });
       });
 
