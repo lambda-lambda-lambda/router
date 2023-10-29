@@ -118,8 +118,8 @@ class RouterResponse {
         this.data().body = buffer.toString('base64');
         this.data().bodyEncoding = 'base64';
       },
-      json: (obj = {}) => {
-        this.data().body = this.json(obj);
+      json: obj => {
+        this.data().body = this.json(obj || {});
         this.data().bodyEncoding = 'text';
       },
       text: str => {

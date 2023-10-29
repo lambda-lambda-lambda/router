@@ -81,21 +81,42 @@ describe('Response module', function() {
         });
 
         describe('json (argument)', function() {
-          const arg = {foo: 'bar'};
+          describe('array', function() {
+            const arg = [{foo: 'bar'}];
 
-          const response = new Response(event.Records[0].cf.response);
-          response.status(code).send(arg);
+            const response = new Response(event.Records[0].cf.response);
+            response.status(code).send(arg);
 
-          it('should return status', function() {
-            expect(response.data().status).to.equal(code);
+            it('should return status', function() {
+               expect(response.data().status).to.equal(code);
+            });
+
+            it('should return body', function() {
+               expect(response.data().body).to.equal(JSON.stringify(arg));
+            });
+
+            it('should return encoding', function() {
+               expect(response.data().bodyEncoding).to.equal('text');
+            });
           });
 
-          it('should return body', function() {
-            expect(response.data().body).to.equal(JSON.stringify(arg));
-          });
+          describe('object', function() {
+            const arg = {foo: 'bar'};
 
-          it('should return encoding', function() {
-            expect(response.data().bodyEncoding).to.equal('text');
+            const response = new Response(event.Records[0].cf.response);
+            response.status(code).send(arg);
+
+            it('should return status', function() {
+              expect(response.data().status).to.equal(code);
+            });
+
+            it('should return body', function() {
+              expect(response.data().body).to.equal(JSON.stringify(arg));
+            });
+
+            it('should return encoding', function() {
+              expect(response.data().bodyEncoding).to.equal('text');
+            });
           });
         });
 
@@ -144,21 +165,60 @@ describe('Response module', function() {
 
       describe('.json', function() {
         const code = 456;
-        const arg  = {foo: 'bar'};
 
-        const response = new Response(event.Records[0].cf.response);
-        response.status(code).json(arg);
+        describe('array', function() {
+          const arg  = [{foo: 'bar'}];
 
-        it('should return status', function() {
-          expect(response.data().status).to.equal(code);
+          const response = new Response(event.Records[0].cf.response);
+          response.status(code).json(arg);
+
+          it('should return status', function() {
+            expect(response.data().status).to.equal(code);
+          });
+
+          it('should return body', function() {
+            expect(response.data().body).to.equal(JSON.stringify(arg));
+          });
+
+          it('should return encoding', function() {
+            expect(response.data().bodyEncoding).to.equal('text');
+          });
         });
 
-        it('should return body', function() {
-          expect(response.data().body).to.equal(JSON.stringify(arg));
+        describe('object', function() {
+          const arg  = {foo: 'bar'};
+
+          const response = new Response(event.Records[0].cf.response);
+          response.status(code).json(arg);
+
+          it('should return status', function() {
+            expect(response.data().status).to.equal(code);
+          });
+
+          it('should return body', function() {
+            expect(response.data().body).to.equal(JSON.stringify(arg));
+          });
+
+          it('should return encoding', function() {
+            expect(response.data().bodyEncoding).to.equal('text');
+          });
         });
 
-        it('should return encoding', function() {
-          expect(response.data().bodyEncoding).to.equal('text');
+        describe('undefined', function() {
+          const response = new Response(event.Records[0].cf.response);
+          response.status(code).json('');
+
+          it('should return status', function() {
+            expect(response.data().status).to.equal(code);
+          });
+
+          it('should return body', function() {
+            expect(response.data().body).to.equal('{}');
+          });
+
+          it('should return encoding', function() {
+            expect(response.data().bodyEncoding).to.equal('text');
+          });
         });
       });
 
