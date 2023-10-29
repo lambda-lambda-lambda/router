@@ -43,14 +43,25 @@ describe('Response module', function() {
     });
 
     describe('setHeader', function() {
-      const response = new Response(event.Records[0].cf.response);
-
-      response.setHeader('foo', 'bar');
-
-      const result = response.data().headers;
-
       it('should return value', function() {
+        const response = new Response(event.Records[0].cf.response);
+
+        response.setHeader('foo', 'bar');
+
+        const result = response.data().headers;
+
         expect(result).to.deep.equal({'foo': [{'key': 'foo', 'value': 'bar'}]});
+      });
+
+      it('should return default', function() {
+        const response = new Response(event.Records[0].cf.response);
+
+        response.setHeader('', '');
+
+        const result = response.data().headers;
+
+        expect(result).to.be.an('object');
+        expect(result).to.deep.equal({});
       });
     });
 
