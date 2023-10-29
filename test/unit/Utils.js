@@ -9,14 +9,14 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 // Load modules.
-const Common = require(`${PACKAGE_ROOT}/src/router/Common.js`);
+const Utils = require(`${PACKAGE_ROOT}/src/router/Utils.js`);
 
-describe('Common module', function() {
+describe('Utils module', function() {
   describe('Static methods', function() {
     describe('isAsyncFunc', function() {
-      const result1 = Common.isAsyncFunc(async function() {});
-      const result2 = Common.isAsyncFunc(new Object());
-      const result3 = Common.isAsyncFunc(new Function());
+      const result1 = Utils.isAsyncFunc(async function() {});
+      const result2 = Utils.isAsyncFunc(new Object());
+      const result3 = Utils.isAsyncFunc(new Function());
 
       it('should return value', function() {
         expect(result1).to.be.true;
@@ -26,10 +26,10 @@ describe('Common module', function() {
     });
 
     describe('isPromise', function() {
-      const result1 = Common.isPromise(new Promise(() => {}));
-      const result2 = Common.isPromise(new Object());
-      const result3 = Common.isPromise(new Function());
-      const result4 = Common.isPromise(function() {
+      const result1 = Utils.isPromise(new Promise(() => {}));
+      const result2 = Utils.isPromise(new Object());
+      const result3 = Utils.isPromise(new Function());
+      const result4 = Utils.isPromise(function() {
         return Promise.resolve();
       });
 
@@ -42,12 +42,12 @@ describe('Common module', function() {
     });
 
     describe('isValidPath', function() {
-      const result1 = Common.isValidPath('/');
-      const result2 = Common.isValidPath('/foo_bar');
-      const result3 = Common.isValidPath('/foo_bar/biz-baz');
-      const result4 = Common.isValidPath('/foo_bar/biz-baz/qux*');
-      const result5 = Common.isValidPath('/foo_bar/biz-baz/qux?name=value');
-      const result6 = Common.isValidPath('foo_bar/biz-baz/qux/qax');
+      const result1 = Utils.isValidPath('/');
+      const result2 = Utils.isValidPath('/foo_bar');
+      const result3 = Utils.isValidPath('/foo_bar/biz-baz');
+      const result4 = Utils.isValidPath('/foo_bar/biz-baz/qux*');
+      const result5 = Utils.isValidPath('/foo_bar/biz-baz/qux?name=value');
+      const result6 = Utils.isValidPath('foo_bar/biz-baz/qux/qax');
 
       it('should return value', function() {
         expect(result1).to.be.true;
@@ -60,10 +60,10 @@ describe('Common module', function() {
     });
 
     describe('isValidFunc', function() {
-      const result1 = Common.isValidFunc(function(req, res, next) {});
-      const result2 = Common.isValidFunc(function(req, res) {});
-      const result3 = Common.isValidFunc(function(req) {});
-      const result4 = Common.isValidFunc(function() {});
+      const result1 = Utils.isValidFunc(function(req, res, next) {});
+      const result2 = Utils.isValidFunc(function(req, res) {});
+      const result3 = Utils.isValidFunc(function(req) {});
+      const result4 = Utils.isValidFunc(function() {});
 
       it('should return value', function() {
         expect(result1).to.be.true;
@@ -74,10 +74,10 @@ describe('Common module', function() {
     });
 
     describe('isValidRoute', function() {
-      const result1 = Common.isValidRoute('/foo/bar/biz', '/foo/bar/biz', function(req, res, next) {});
-      const result2 = Common.isValidRoute('/foo/bar', '/foo', function(req, res, next) {});
-      const result3 = Common.isValidRoute('/foo', '/foo/bar', function(req, res, next) {});
-      const result4 = Common.isValidRoute('/', '/foo', function(req, res, next) {});
+      const result1 = Utils.isValidRoute('/foo/bar/biz', '/foo/bar/biz', function(req, res, next) {});
+      const result2 = Utils.isValidRoute('/foo/bar', '/foo', function(req, res, next) {});
+      const result3 = Utils.isValidRoute('/foo', '/foo/bar', function(req, res, next) {});
+      const result4 = Utils.isValidRoute('/', '/foo', function(req, res, next) {});
 
       it('should return value', function() {
         expect(result1).to.be.true;
@@ -88,10 +88,10 @@ describe('Common module', function() {
     });
 
     describe('getResourceId', function() {
-      const result1 = Common.getResourceId('/foo/bar/abc123', '/foo/bar/biz', function(req, res, next) {});
-      const result2 = Common.getResourceId('/foo/bar/abc123', '/foo/bar', function(req, res, next) {});
-      const result3 = Common.getResourceId('/foo/abc123', '/foo/bar', function(req, res, next) {});
-      const result4 = Common.getResourceId('/foo/abc123', '/foo', function(req, res, next) {});
+      const result1 = Utils.getResourceId('/foo/bar/abc123', '/foo/bar/biz', function(req, res, next) {});
+      const result2 = Utils.getResourceId('/foo/bar/abc123', '/foo/bar', function(req, res, next) {});
+      const result3 = Utils.getResourceId('/foo/abc123', '/foo/bar', function(req, res, next) {});
+      const result4 = Utils.getResourceId('/foo/abc123', '/foo', function(req, res, next) {});
 
       it('should return value', function() {
         expect(result1).to.be.undefined;
@@ -104,7 +104,7 @@ describe('Common module', function() {
     describe('setFuncName', function() {
       const func = function(req, res, next) {};
 
-      Common.setFuncName(func, 'foo');
+      Utils.setFuncName(func, 'foo');
 
       it('should return value', function() {
         expect(func.name).to.be.an('string');
@@ -115,10 +115,10 @@ describe('Common module', function() {
     describe('moduleParent', function() {
 
       // Can be only tested in an E2E context.
-      sinon.stub(Common, 'moduleParent')
+      sinon.stub(Utils, 'moduleParent')
         .returns('/path/to/foo');
 
-      const path = Common.moduleParent();
+      const path = Utils.moduleParent();
 
       it('should return value', function() {
         expect(path).to.be.an('string');
@@ -134,7 +134,7 @@ describe('Common module', function() {
         (c) => Promise.resolve(c)
       ];
 
-      const promise = Common.promiseEvents(promises);
+      const promise = Utils.promiseEvents(promises);
 
       it('should resolve Promise', function() {
         expect(promise).to.be.fulfilled;

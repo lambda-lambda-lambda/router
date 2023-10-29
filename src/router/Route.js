@@ -12,7 +12,7 @@
 'use strict';
 
 // Local modules.
-const {getResourceId, isAsyncFunc, isValidFunc, setFuncName} = require('./Common');
+const {getResourceId, isAsyncFunc, isValidFunc, setFuncName} = require('./Utils');
 
 /**
  * Handle routing operations for the given Route.

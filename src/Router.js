@@ -25,7 +25,7 @@ const {
   isValidRoute,
   moduleParent,
   setFuncName
-} = require('./router/Common');
+} = require('./router/Utils');
 
 // Global variables.
 global.APP_ROOT = process.env.LAMBDA_TASK_ROOT || `${process.cwd()}/src`;

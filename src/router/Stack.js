@@ -10,7 +10,7 @@
 'use strict';
 
 // Local modules.
-const {isAsyncFunc, isValidFunc, promiseEvents} = require('./Common');
+const {isAsyncFunc, isValidFunc, promiseEvents} = require('./Utils');
 
 /**
  * Provides Stack item handler and methods.

@@ -10,10 +10,10 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 // Load modules.
-const Common   = require(`${PACKAGE_ROOT}/src/router/Common.js`);
 const Request  = require(`${PACKAGE_ROOT}/src/router/Request.js`);
 const Response = require(`${PACKAGE_ROOT}/src/router/Response.js`);
 const Stack    = require(`${PACKAGE_ROOT}/src/router/Stack.js`);
+const Utils    = require(`${PACKAGE_ROOT}/src/router/Utils.js`);
 
 describe('Stack module', function() {
   describe('Instance methods', function() {
@@ -24,7 +24,7 @@ describe('Stack module', function() {
         const func = function(req, res, next) {};
         const name = 'middleware';
 
-        Common.setFuncName(func, name);
+        Utils.setFuncName(func, name);
 
         stack.add(func);
 
@@ -42,7 +42,7 @@ describe('Stack module', function() {
         const func = function(req, res, next) {};
         const name = 'route:index';
 
-        Common.setFuncName(func, name);
+        Utils.setFuncName(func, name);
 
         stack.add(func);
 
@@ -60,7 +60,7 @@ describe('Stack module', function() {
         const func = function(req, res, next) {};
         const name = 'resource:index';
 
-        Common.setFuncName(func, name);
+        Utils.setFuncName(func, name);
 
         stack.add(func);
 
@@ -78,7 +78,7 @@ describe('Stack module', function() {
         const func = function(req, res, next) {};
         const name = 'fallback';
 
-        Common.setFuncName(func, name);
+        Utils.setFuncName(func, name);
 
         stack.add(func);
 
@@ -103,7 +103,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func1, 'middleware');
+        Utils.setFuncName(func1, 'middleware');
 
         const func2 = function(req, res, next) {
           res.setHeader('Route', true);
@@ -112,7 +112,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func1, 'route:get');
+        Utils.setFuncName(func1, 'route:get');
 
         const func3 = function(req, res, next) {
           res.setHeader('Resource', true);
@@ -121,7 +121,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func1, 'resource:get');
+        Utils.setFuncName(func1, 'resource:get');
 
         const func4 = function(req, res, next) {
           res.setHeader('Fallback', true);
@@ -130,7 +130,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func1, 'fallback');
+        Utils.setFuncName(func1, 'fallback');
 
         stack.middleware = [func1];
         stack.routes     = [func2];
@@ -175,7 +175,7 @@ describe('Stack module', function() {
             await count++;
           };
 
-          Common.setFuncName(func1, 'middleware');
+          Utils.setFuncName(func1, 'middleware');
 
           const func2 = async function(req, res, next) {
             res.setHeader('Route', true);
@@ -183,7 +183,7 @@ describe('Stack module', function() {
             await count++;
           };
 
-          Common.setFuncName(func1, 'route:get');
+          Utils.setFuncName(func1, 'route:get');
 
           const func3 = async function(req, res, next) {
             res.setHeader('Resource', true);
@@ -191,7 +191,7 @@ describe('Stack module', function() {
             await count++;
           };
 
-          Common.setFuncName(func1, 'resource:get');
+          Utils.setFuncName(func1, 'resource:get');
 
           const func4 = async function(req, res, next) {
             res.setHeader('Fallback', true);
@@ -199,7 +199,7 @@ describe('Stack module', function() {
             await count++;
           };
 
-          Common.setFuncName(func1, 'fallback');
+          Utils.setFuncName(func1, 'fallback');
 
           stack.middleware = [func1];
           stack.routes     = [func2];
@@ -244,14 +244,14 @@ describe('Stack module', function() {
             res.setHeader('Middleware', true);
           };
 
-          Common.setFuncName(func1, 'middleware');
+          Utils.setFuncName(func1, 'middleware');
 
           const func2 = async function(req, res, next) {
             res.setHeader('Middleware', true);
             next();
           };
 
-          Common.setFuncName(func2, 'middleware');
+          Utils.setFuncName(func2, 'middleware');
 
           stack.middleware = [func1, func2];
 
@@ -273,7 +273,7 @@ describe('Stack module', function() {
               res.setHeader('Middleware', true);
             };
 
-            Common.setFuncName(func1, 'middleware');
+            Utils.setFuncName(func1, 'middleware');
 
             const func2 = async function(req, res, next) {
               res.setHeader('Middleware', true);
@@ -281,7 +281,7 @@ describe('Stack module', function() {
               return Promise.reject('Output to console');
             };
 
-            Common.setFuncName(func2, 'middleware');
+            Utils.setFuncName(func2, 'middleware');
 
             stack.middleware = [func1, func2];
 
@@ -310,7 +310,7 @@ describe('Stack module', function() {
               res.setHeader('Middleware', true);
             };
 
-            Common.setFuncName(func1, 'middleware');
+            Utils.setFuncName(func1, 'middleware');
 
             const func2 = async function(req, res, next) {
               res.setHeader('Middleware', true);
@@ -318,7 +318,7 @@ describe('Stack module', function() {
               return Promise.reject(new Error('Output to error'));
             };
 
-            Common.setFuncName(func2, 'middleware');
+            Utils.setFuncName(func2, 'middleware');
 
             stack.middleware = [func1, func2];
 
@@ -346,7 +346,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func1, 'middleware');
+        Utils.setFuncName(func1, 'middleware');
 
         const func2 = function(req, res, next) {
           const num = req.plugin('foo');
@@ -355,7 +355,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func2, 'middleware');
+        Utils.setFuncName(func2, 'middleware');
 
         const func3 = function(req, res, next) {
           const num = req.plugin('foo');
@@ -364,7 +364,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func3, 'route:get');
+        Utils.setFuncName(func3, 'route:get');
 
         const func4 = function(req, res, next) {
           const num = req.plugin('foo');
@@ -373,7 +373,7 @@ describe('Stack module', function() {
           next();
         };
 
-        Common.setFuncName(func4, 'resource:get');
+        Utils.setFuncName(func4, 'resource:get');
 
         const func5 = function(req, res, next) {
           const num = req.plugin('foo');
@@ -416,7 +416,7 @@ describe('Stack module', function() {
           req.plugin('foo', num);
         };
 
-        Common.setFuncName(func1, 'middleware');
+        Utils.setFuncName(func1, 'middleware');
 
         const func2 = async function(req, res, next) {
           const num = req.plugin('foo');
@@ -424,7 +424,7 @@ describe('Stack module', function() {
           req.plugin('foo', num + 1);
         };
 
-        Common.setFuncName(func2, 'middleware');
+        Utils.setFuncName(func2, 'middleware');
 
         const func3 = async function(req, res, next) {
           const num = req.plugin('foo');
@@ -432,7 +432,7 @@ describe('Stack module', function() {
           req.plugin('foo', num + 1);
         };
 
-        Common.setFuncName(func3, 'route:get');
+        Utils.setFuncName(func3, 'route:get');
 
         const func4 = async function(req, res, next) {
           const num = req.plugin('foo');
@@ -440,7 +440,7 @@ describe('Stack module', function() {
           req.plugin('foo', num + 1);
         };
 
-        Common.setFuncName(func4, 'resource:get');
+        Utils.setFuncName(func4, 'resource:get');
 
         const func5 = async function(req, res, next) {
           const num = req.plugin('foo');

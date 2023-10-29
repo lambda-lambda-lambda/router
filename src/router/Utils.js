@@ -1,4 +1,4 @@
-/** @module router/Common */
+/** @module router/Utils */
 
 /**
  *  lambda-lambda-lambda/router
@@ -12,7 +12,7 @@
 'use strict';
 
 // Local reference.
-const Config = this;
+const Utils = this;
 
 /**
  * Check if value is an async function.
@@ -102,7 +102,7 @@ exports.isValidFunc = function(value) {
  * // true
  */
 exports.isValidRoute = function(uri, path, func) {
-  if (Config.isValidFunc(func) && !/^route:/.test(func.name)) {
+  if (Utils.isValidFunc(func) && !/^route:/.test(func.name)) {
     return !!uri.match(new RegExp(`^${path}(\/[a-z0-9-_]+)?$`, 'i')); // nosemgrep
   }
 

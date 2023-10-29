@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 // Load modules.
 const Router        = require(`${PACKAGE_ROOT}/src/Router.js`);
-const {setFuncName} = require(`${PACKAGE_ROOT}/src/router/Common.js`);
+const {setFuncName} = require(`${PACKAGE_ROOT}/src/router/Utils.js`);
 
 describe('Router module', function() {
   describe('Instance methods', function() {
