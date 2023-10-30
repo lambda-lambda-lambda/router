@@ -7,7 +7,7 @@
     "gendoc": "jsdoc -c .jsdocrc",
     "lint": "eslint src test",
     "test": "nyc mocha --require test/mocha.env.js 'test/**/*.js'",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov > lcov.info && ./coveralls report lcov.info"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,6 @@
     "chai": "^4.3.10",
     "chai-as-promised": "^7.1.1",
     "clone": "^2.1.2",
-    "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.11",
     "minami": "^1.2.3",
