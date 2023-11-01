@@ -1,10 +1,13 @@
 'use strict';
 
-const event = require(`${PACKAGE_ROOT}/test/event.json`);
-const chai  = require('chai');
-const clone = require('clone');
+const chai   = require('chai');
+const clone  = require('clone');
+const reload = require('require-reload')(require);
 
 const expect = chai.expect;
+
+// Reload cached.
+const event = reload(`${PACKAGE_ROOT}/test/event.json`);
 
 // Load modules.
 const Request = require(`${PACKAGE_ROOT}/src/router/Request.js`);
@@ -28,6 +31,7 @@ describe('Request module', function() {
         expect(request.header('X-Forwarded-For')).to.equal('203.0.113.178');
         expect(request.header('User-Agent')).to.equal('Amazon CloudFront');
         expect(request.header('Host')).to.equal('example.org');
+        expect(request.header('Accept')).to.equal('text/html');
         expect(request.header('Unknown')).to.equal(undefined);
       });
     });
