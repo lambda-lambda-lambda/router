@@ -9,6 +9,9 @@
 
 'use strict';
 
+// Local modules.
+const {RouterError} = require('./Error');
+
 /**
  * Provides AWS CloudFront request instance and methods.
  *
@@ -189,7 +192,7 @@ class RouterRequest {
     } else if (plugin && !value) {
       return this.plugins[name];
     } else if (!plugin) {
-      throw new Error(`Plugin "${name}" doesn't exist`);
+      throw new RouterError(`Plugin "${name}" doesn't exist`);
     }
   }
 

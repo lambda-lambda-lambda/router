@@ -10,10 +10,11 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 // Load modules.
-const Request  = require(`${PACKAGE_ROOT}/src/router/Request.js`);
-const Response = require(`${PACKAGE_ROOT}/src/router/Response.js`);
-const Stack    = require(`${PACKAGE_ROOT}/src/router/Stack.js`);
-const Utils    = require(`${PACKAGE_ROOT}/src/router/Utils.js`);
+const {RouterError} = require(`${PACKAGE_ROOT}/src/router/Error.js`);
+const Request       = require(`${PACKAGE_ROOT}/src/router/Request.js`);
+const Response      = require(`${PACKAGE_ROOT}/src/router/Response.js`);
+const Stack         = require(`${PACKAGE_ROOT}/src/router/Stack.js`);
+const Utils         = require(`${PACKAGE_ROOT}/src/router/Utils.js`);
 
 describe('Stack module', function() {
   describe('Instance methods', function() {
@@ -271,7 +272,7 @@ describe('Stack module', function() {
           it('should throw Error', function() {
             const promise = stack.exec(req, res);
 
-            return expect(promise).to.be.rejectedWith(Error, /Middleware next\(\) is unsupported/);
+            return expect(promise).to.be.rejectedWith(RouterError, /Middleware next\(\) is unsupported/);
           });
         });
 
@@ -325,7 +326,7 @@ describe('Stack module', function() {
             const func2 = async function(req, res, next) {
               res.setHeader('Middleware', true);
 
-              return Promise.reject(new Error('Output to error'));
+              return Promise.reject(new RouterError('Output to error'));
             };
 
             Utils.setFuncName(func2, 'middleware');
@@ -338,7 +339,7 @@ describe('Stack module', function() {
             it('should throw Error', function() {
               const promise = stack.exec(req, res);
 
-              return expect(promise).to.be.rejectedWith(Error, /Output to error/);
+              return expect(promise).to.be.rejectedWith(RouterError, /Output to error/);
             });
           });
         });

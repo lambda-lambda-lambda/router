@@ -10,7 +10,12 @@
 'use strict';
 
 // Local modules.
-const {isAsyncFunc, isValidFunc, promiseEvents} = require('./Utils');
+const {RouterError} = require('./Error');
+const {
+  isAsyncFunc,
+  isValidFunc,
+  promiseEvents
+} = require('./Utils');
 
 /**
  * Provides Stack item handler and methods.
@@ -126,7 +131,7 @@ class RouterStack {
           // Asynchronous handling.
           promises.push(() => {
             return func(req, res, function() {
-              throw new Error('Middleware next() is unsupported in async');
+              throw new RouterError('Middleware next() is unsupported in async');
             });
           });
 
@@ -143,7 +148,7 @@ class RouterStack {
     if (promises.length) {
       return promiseEvents(promises)
         .catch(err => {
-          if (err instanceof Error) {
+          if (err instanceof RouterError) {
             throw err;
           } else if (err) {
             console.info(err);
