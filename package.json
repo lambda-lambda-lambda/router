@@ -29,20 +29,20 @@
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.122",
+    "@types/aws-lambda": "^8.10.125",
     "chai": "^4.3.10",
     "chai-as-promised": "^7.1.1",
     "clone": "^2.1.2",
-    "eslint": "^7.32.0",
+    "eslint": "^8.53.0",
     "jsdoc": "^4.0.2",
     "minami": "^1.2.3",
-    "mocha": "^9.2.2",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "require-reload": "^0.2.2",
     "resnap": "^1.0.1",
-    "sinon": "^15.2.0"
+    "sinon": "^17.0.1"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   }
 }
