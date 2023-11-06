@@ -22,3 +22,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 - Main documentation (new section)
 - Development dependencies
+
+## [0.8.0] - 2023-11-06
+
+## Added
+
+- Differentiate app/router errors (added `RouterError`)
+
+## Updated
+
+- Renamed class `Common` >> `Utils`
+- Replaced coveralls w/ [coverage-reporter](https://github.com/coverallsapp/coverage-reporter)
+- Package node engine to AWS supported (v18)
