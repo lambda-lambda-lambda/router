@@ -118,6 +118,15 @@ class Router {
    *   Route/Middleware function (optional).
    *
    * @example
+   * // Include function as middleware.
+   * const Middleware = require('./path/to/middleware');
+   *
+   * router.use(Middleware);
+   *
+   *   ..
+   *
+   *
+   * // Run function for every request.
    * router.use(function(req, res, next) {
    *   if (req.method() === 'POST') {
    *     res.status(405).send();
@@ -128,6 +137,7 @@ class Router {
    *
    *   ..
    *
+   * // Run function on URI path only.
    * router.use('/api/test', function(req, res) {
    *   res.setHeader('Content-Type', 'text/html');
    *   res.status(200).send('Hello World');
