@@ -1,7 +1,7 @@
 .eslintrc
+.github
 .jsdocrc
 .nyc_output
-.travis.yml
 .vscode
 ISSUE_TEMPLATE.md
 package.*
