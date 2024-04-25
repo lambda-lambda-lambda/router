@@ -314,7 +314,7 @@ describe('Stack module', function() {
             });
           });
 
-          describe('with Error', function() {
+          describe('with RouterError', function() {
             const stack = new Stack();
 
             const func1 = async function(req, res, next) {
@@ -340,6 +340,35 @@ describe('Stack module', function() {
               const promise = stack.exec(req, res);
 
               return expect(promise).to.be.rejectedWith(RouterError, /Output to error/);
+            });
+          });
+
+          describe('undefined', function() {
+            const stack = new Stack();
+
+            const func1 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+            };
+
+            Utils.setFuncName(func1, 'middleware');
+
+            const func2 = async function(req, res, next) {
+              res.setHeader('Middleware', true);
+
+              return Promise.reject();
+            };
+
+            Utils.setFuncName(func2, 'middleware');
+
+            stack.middleware = [func1, func2];
+
+            const req = new Request(event.Records[0].cf.request, {});
+            const res = new Response({});
+
+            it('should ignore exception', function() {
+              const promise = stack.exec(req, res);
+
+              return expect(promise).to.be.fulfilled;
             });
           });
         });

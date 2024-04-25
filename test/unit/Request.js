@@ -46,12 +46,12 @@ describe('Request module', function() {
     });
 
     describe('param', function() {
-      const obj = clone(event.Records[0].cf.request);
-
       describe('queryString', function() {
+        const obj = clone(event.Records[0].cf.request);
 
         // Alter cloned request.
         obj.querystring = 'foo=bar&biz=baz';
+        obj.body.data   = '';
 
         const request = new Request(obj);
 
@@ -79,9 +79,11 @@ describe('Request module', function() {
       });
 
       describe('body', function() {
+        const obj = clone(event.Records[0].cf.request);
 
         // Alter cloned request.
-        obj.body = 'Zm9vPWJhciZiaXo9YmF6==';
+        obj.querystring = '';
+        obj.body.data   = 'Zm9vPWJhciZiaXo9YmF6==';
 
         const request = new Request(obj);
 
@@ -100,6 +102,32 @@ describe('Request module', function() {
             expect(result).to.equal('baz');
           });
 
+          it('should not return value', function() {
+            const result = request.param('qux');
+
+            expect(result).to.be.undefined;
+          });
+        });
+      });
+
+      describe('undefined', function() {
+        const obj = clone(event.Records[0].cf.request);
+
+        // Alter cloned request.
+        obj.querystring = '';
+        obj.body.data   = '';
+
+        const request = new Request(obj);
+
+        describe('param()', function() {
+          it('should not return value', function() {
+            const result = request.param();
+
+            expect(result).to.be.undefined;
+          });
+        });
+
+        describe('param(argument)', function() {
           it('should not return value', function() {
             const result = request.param('qux');
 
@@ -213,10 +241,15 @@ describe('Request module', function() {
     describe('parseBody', function() {
       const result1 = Request.parseBody('Zm9vPWJhciZiaXo9YmF6==');
       const result2 = Request.parseBody('eyJmb28iOiAiYmFyIiwgImJpeiI6ICJiYXoifQ==');
+      const result3 = Request.parseBody('');
 
       it('should return value', function() {
         expect(result1).to.deep.equal({foo: 'bar', biz: 'baz'});
         expect(result2).to.deep.equal({foo: 'bar', biz: 'baz'});
+      });
+
+      it('should return no value', function() {
+        expect(result3).to.be.undefined;
       });
     });
 

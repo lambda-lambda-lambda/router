@@ -79,7 +79,6 @@ class Router {
 
     const result = this.stack.exec(this.req, this.res);
 
-    /* istanbul ignore if (tested in: test/e2e/async) */
     if (isPromise(result)) {
       return result.then(() => this.res.data());
     }
@@ -311,23 +310,21 @@ class Router {
 function loadRoutes(router) {
   const routeDir = moduleParent() + '/routes';
 
-  if (fs.existsSync(routeDir)) {
-    const files = getRoutes(routeDir);
+  const files = getRoutes(routeDir);
 
-    files.forEach(file => {
-      file = path.relative(routeDir, file);
-      const {dir, name} = path.parse(file);
+  files.forEach(file => {
+    file = path.relative(routeDir, file);
+    const {dir, name} = path.parse(file);
 
-      const filePath = [dir, name].join('/');
-      const route = require(`${routeDir}/${filePath}`);
+    const filePath = [dir, name].join('/');
+    const route = require(`${routeDir}/${filePath}`);
 
-      route.path = (
-        filePath[0] === '/' ? filePath : `/${filePath}`
-      ).toLowerCase();
+    route.path = (
+      filePath[0] === '/' ? filePath : `/${filePath}`
+    ).toLowerCase();
 
-      Route(router, route);
-    });
-  }
+    Route(router, route);
+  });
 }
 
 /**
@@ -343,13 +340,14 @@ function loadRoutes(router) {
  */
 function getRoutes(dir, files = []) {
   fs.readdirSync(dir).forEach(function(file) {
-    const filePath = path.join(dir, file); // nosemgrep
+    const filePath = path.join(dir, file);
 
     if (fs.lstatSync(filePath).isDirectory()) {
 
       // Perform recursive traversal.
       getRoutes(filePath, files);
-    } else if (path.extname(filePath) === '.js') {
+
+    } else /* istanbul ignore next */ if (path.extname(filePath) === '.js') {
       files.push(filePath);
     }
   });

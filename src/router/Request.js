@@ -97,16 +97,17 @@ class RouterRequest {
   param(name) {
     let obj = {};
 
-    /* istanbul ignore else (tested in: test/unit/Request) */
     if (this.queryString()) {
       obj = RouterRequest.parseParams(this.queryString());
     } else if (this.body()) {
       obj = RouterRequest.parseBody(this.body());
     }
 
-    if (name && obj[name]) {
-      return obj[name];
-    } else if (!name && obj) {
+    if (Object.keys(obj).length > 0) {
+      if (name) {
+        return obj[name];
+      }
+
       return obj;
     }
   }
@@ -188,12 +189,12 @@ class RouterRequest {
     const plugin = this.plugins[name];
 
     if ((!plugin && name && value) || (plugin && value)) {
-      this.plugins[name] = value;
+      return this.plugins[name] = value;
     } else if (plugin && !value) {
       return this.plugins[name];
-    } else if (!plugin) {
-      throw new RouterError(`Plugin "${name}" doesn't exist`);
     }
+
+    throw new RouterError(`Plugin "${name}" doesn't exist`);
   }
 
   /**

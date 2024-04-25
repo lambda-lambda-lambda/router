@@ -7,8 +7,8 @@ const contentNegotiation = require(`${PACKAGE_ROOT}/test/e2e/async/handler/middl
  * @export {Object}
  */
 module.exports = {
-  middleware: [contentNegotiation],
-  resource: true,
+  middleware: contentNegotiation,
+  resource: ['get', 'put', 'patch', 'delete', 'post'],
 
   /**
    * GET /api/<path>/<resourceId>

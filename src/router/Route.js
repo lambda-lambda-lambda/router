@@ -60,8 +60,6 @@ module.exports = (router, route) => {
 
   // Add route-bound middleware, if available.
   if (route.middleware) {
-
-    /* istanbul ignore else (tested in: test/e2e) */
     if (Array.isArray(route.middleware)) {
       route.middleware.forEach(func => router.use(path, func));
     } else {
