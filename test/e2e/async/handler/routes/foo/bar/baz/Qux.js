@@ -14,59 +14,44 @@ module.exports = {
    * GET /api/<path>/<resourceId>
    */
   async get (req, res, id) {
-    return new Promise(function(resolve) {
-      res.setHeader('X-Request-ID', id);
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json({get: true});
-      resolve();
-    });
+    res.setHeader('X-Request-ID', id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json({get: true});
   },
 
   /**
    * PUT /api/<path>/<resourceId>
    */
   async put (req, res, id) {
-    return new Promise(function(resolve) {
-      res.setHeader('X-Request-ID', id);
-      res.setHeader('Content-Type', 'application/json');
-      res.status(201).json({put: true});
-      resolve();
-    });
+    res.setHeader('X-Request-ID', id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(201).json({put: true});
   },
 
   /**
    * PATCH /api/<path>/<resourceId>
    */
   async patch (req, res, id) {
-    return new Promise(function(resolve) {
-      res.setHeader('X-Request-ID', id);
-      res.setHeader('Content-Type', 'application/json');
-      res.status(204).json({patch: true});
-      resolve();
-    });
+    res.setHeader('X-Request-ID', id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(204).json({patch: true});
   },
 
   /**
    * DELETE /api/<path>/<resourceId>
    */
   async delete (req, res, id) {
-    return new Promise(function(resolve) {
-      res.setHeader('X-Request-ID', id);
-      res.setHeader('Content-Type', 'application/json');
-      res.status(410).json({delete: true});
-      resolve();
-    });
+    res.setHeader('X-Request-ID', id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(410).json({delete: true});
   },
 
   /**
    * POST /api/<path>/<resourceId>
    */
   async post (req, res, id) {
-    return new Promise(function(resolve) {
-      res.setHeader('X-Request-ID', id);
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json({post: true});
-      resolve();
-    });
+    res.setHeader('X-Request-ID', id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json({post: true});
   }
 };
