@@ -18,18 +18,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 ## [0.7.4] - 2023-10-02
 
-## Updated
+### Updated
 
 - Main documentation (new section)
 - Development dependencies
 
 ## [0.8.0] - 2023-11-06
 
-## Added
+### Added
 
 - Differentiate app/router errors (added `RouterError`)
 
-## Updated
+### Updated
 
 - Renamed class `Common` >> `Utils`
 - Replaced coveralls w/ [coverage-reporter](https://github.com/coverallsapp/coverage-reporter)
@@ -37,7 +37,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 ## [0.8.1] - 2023-02-28
 
-## Updated
+### Updated
 
-- Replaced Travis-CI with Github workflow 
+- Replaced Travis-CI with Github workflow
 - Added comments to `router.use` @example
+
+## [0.8.2] - 2024-04-26
+
+### Added
+
+- `exports.js` to consolidate interfaces used in plugin tests
+
+### Updated
+
+- Minor refactor, clear up test gaps
+- Resolved Instanbul warnings (100%)
+- Replaced JSDoc theme [minami](https://github.com/Nijikokun/minami) with [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme)
