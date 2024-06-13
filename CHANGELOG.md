@@ -53,3 +53,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 - Minor refactor, clear up test gaps
 - Resolved Instanbul warnings (100%)
 - Replaced JSDoc theme [minami](https://github.com/Nijikokun/minami) with [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme)
+
+## [0.8.3] - 2024-06-13
+
+### Updated
+
+- Upgraded [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme) (bug fixes)
+- Upgraded outdated NPM `devDependencies`
