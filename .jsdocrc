@@ -22,5 +22,13 @@
     "private": true,
     "recurse": true,
     "template": "./node_modules/clean-jsdoc-theme"
+  },
+  "theme_opts": {
+    "homepageTitle": "L³ router | AWS CloudFront Lambda@Edge serverless application router",
+    "includeFilesListInHomepage": true
+  },
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
   }
 }
