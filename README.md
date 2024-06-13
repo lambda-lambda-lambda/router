@@ -48,7 +48,10 @@ If you just looking to leverage the Request/Response handling [API](CommonMethod
 
 ## Documentation
 
+- [Introduction](https://github.com/lambda-lambda-lambda/manual/blob/master/Introduction.md)
+- [Getting Started](https://github.com/lambda-lambda-lambda/manual/blob/master/GettingStarted.md)
 - [AWS requirements](https://github.com/lambda-lambda-lambda/manual/blob/master/AWSRequirements.md)
+- [Running your App](https://github.com/lambda-lambda-lambda/manual/blob/master/RunningYourApp.md)
 - [Usage](https://github.com/lambda-lambda-lambda/manual/blob/master/Usage.md)
 - [Common methods](https://github.com/lambda-lambda-lambda/manual/blob/master/CommonMethods.md)
 - [Complex routing](https://github.com/lambda-lambda-lambda/manual/blob/master/ComplexRouting.md)
