@@ -60,3 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 - Upgraded [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme) (bug fixes)
 - Upgraded outdated NPM `devDependencies`
+
+## [0.8.4] - 2024-09-02
+
+- Upgraded outdated NPM packages
