@@ -64,3 +64,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 ## [0.8.4] - 2024-09-02
 
 - Upgraded outdated NPM packages
+
+## [0.8.5] - 2024-12-01
+
+- NPM security update (CVE-2024-21538)
+- Upgraded outdated NPM packages
