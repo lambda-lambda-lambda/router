@@ -9,7 +9,7 @@ AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda
 ## Features
 
 - Request/Response handling [API](https://github.com/lambda-lambda-lambda/manual/blob/master/CommonMethods.md).
-- [Routes](ComplexRouting.md#route-handler) and URI [Resource](https://github.com/lambda-lambda-lambda/manual/blob/master/ComplexRouting.md#resource-handler) support.
+- [Routes](https://github.com/lambda-lambda-lambda/manual/blob/master/ComplexRouting.md#route-handler) and URI [Resource](https://github.com/lambda-lambda-lambda/manual/blob/master/ComplexRouting.md#resource-handler) support.
 - Local/Globally scoped [Middleware](https://github.com/lambda-lambda-lambda/manual/blob/master/Middleware.md#scope).
 - [Visual Studio Code](https://code.visualstudio.com) integration.
 - Open Source, [MIT licensed](https://github.com/lambda-lambda-lambda/router/blob/master/LICENSE), FREE.
