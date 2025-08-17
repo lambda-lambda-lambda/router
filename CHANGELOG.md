@@ -69,3 +69,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 - NPM security update (CVE-2024-21538)
 - Upgraded outdated NPM packages
+
+## [0.8.6] - 2025-17-08
+
+- Upgraded outdated NPM packages
