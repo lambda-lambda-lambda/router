@@ -19,6 +19,7 @@ const Route    = require('./router/Route');
 const Stack    = require('./router/Stack');
 
 const {
+  isAsyncFunc,
   isPromise,
   isValidFunc,
   isValidPath,
@@ -189,9 +190,15 @@ class Router {
    */
   default(route) {
     if (isValidFunc(route)) {
-      const func = (req, res, next) => {
-        route(req, res, next);
-      };
+      let func = route;
+
+      if (isAsyncFunc(route) === false) {
+
+        // Construct synchronous function.
+        func = (req, res, next) => {
+          route(req, res, next);
+        };
+      }
 
       setFuncName(func, 'fallback');
 

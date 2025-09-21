@@ -102,18 +102,6 @@ describe('Router module', function() {
       event.Records[0].cf.request.method = 'GET';
       event.Records[0].cf.request.uri    = '/api/foo-bar';
 
-      it('should add stack value', function() {
-        const router = new Router(event.Records[0].cf.request);
-
-        router.default(function(req, res, next) {});
-
-        const stackFunc = router.stack.fallback;
-
-        expect(stackFunc).to.be.an('function');
-        expect(stackFunc.name).to.equal('fallback');
-        expect(stackFunc()).to.be.undefined;
-      });
-
       it('should NOT add stack value', function() {
         const router = new Router(event.Records[0].cf.request);
 
@@ -122,6 +110,34 @@ describe('Router module', function() {
         const stackFunc = router.stack.fallback;
 
         expect(stackFunc).to.be.null;
+      });
+
+      describe('sync', function() {
+        it('should add stack value', function() {
+          const router = new Router(event.Records[0].cf.request);
+
+          router.default(function(req, res, next) {});
+
+          const stackFunc = router.stack.fallback;
+
+          expect(stackFunc).to.be.an('function');
+          expect(stackFunc.name).to.equal('fallback');
+          expect(stackFunc()).to.be.undefined;
+        });
+      });
+
+      describe('async', function() {
+        it('should add stack value', function() {
+          const router = new Router(event.Records[0].cf.request);
+
+          router.default(async function(req, res) {});
+
+          const stackFunc = router.stack.fallback;
+
+          expect(stackFunc).to.be.an('function');
+          expect(stackFunc.name).to.equal('fallback');
+          expect(stackFunc()).to.eventually.be.undefined;
+        });
       });
     });
 
@@ -147,27 +163,6 @@ function assertRouteMethod(name, method) {
   describe(name, function() {
     const uri = '/api/foo-bar';
 
-    it('should add stack value', function() {
-      event.Records[0].cf.request.method = method;
-      event.Records[0].cf.request.uri    = uri;
-
-      const router = new Router(event.Records[0].cf.request);
-
-      const routeFunc = function(req, res, next) {
-        return true;
-      };
-
-      setFuncName(routeFunc, `route:${uri}`);
-
-      router[name]('/api/foo-bar', routeFunc);
-
-      const stackFunc = router.stack.routes[0];
-
-      expect(stackFunc).to.be.an('function');
-      expect(stackFunc.name).to.equal(`route:${uri}`);
-      expect(stackFunc()).to.equal(true);
-    });
-
     it('should NOT add stack value', function() {
       event.Records[0].cf.request.method = method;
       event.Records[0].cf.request.uri    = uri;
@@ -179,6 +174,52 @@ function assertRouteMethod(name, method) {
       const stackFunc = router.stack.routes[0];
 
       expect(stackFunc).to.be.undefined;
+    });
+
+    describe('sync', function() {
+      it('should add stack value', function() {
+        event.Records[0].cf.request.method = method;
+        event.Records[0].cf.request.uri    = uri;
+
+        const router = new Router(event.Records[0].cf.request);
+
+        const routeFunc = function(req, res, next) {
+          return true;
+        };
+
+        setFuncName(routeFunc, `route:${uri}`);
+
+        router[name]('/api/foo-bar', routeFunc);
+
+        const stackFunc = router.stack.routes[0];
+
+        expect(stackFunc).to.be.an('function');
+        expect(stackFunc.name).to.equal(`route:${uri}`);
+        expect(stackFunc()).to.equal(true);
+      });
+    });
+
+    describe('async', function() {
+      it('should add stack value', function() {
+        event.Records[0].cf.request.method = method;
+        event.Records[0].cf.request.uri    = uri;
+
+        const router = new Router(event.Records[0].cf.request);
+
+        const routeFunc = async function(req, res, next) {
+          return true;
+        };
+
+        setFuncName(routeFunc, `route:${uri}`);
+
+        router[name]('/api/foo-bar', routeFunc);
+
+        const stackFunc = router.stack.routes[0];
+
+        expect(stackFunc).to.be.an('function');
+        expect(stackFunc.name).to.equal(`route:${uri}`);
+        expect(stackFunc()).to.eventually.equal(true);
+      });
     });
   });
 }
