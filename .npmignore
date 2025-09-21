@@ -1,9 +1,9 @@
 .github
-.jsdocrc
 .nyc_output
 .vscode
 eslint.config.js
 ISSUE_TEMPLATE.md
+jsdoc.json
 package.*
 doc
 test
