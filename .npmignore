@@ -1,8 +1,8 @@
-.eslintrc
 .github
 .jsdocrc
 .nyc_output
 .vscode
+eslint.config.js
 ISSUE_TEMPLATE.md
 package.*
 doc
