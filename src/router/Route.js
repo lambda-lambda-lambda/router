@@ -4,7 +4,7 @@
  *  lambda-lambda-lambda/router
  *  AWS Lambda@Edge serverless application router.
  *
- *  Copyright 2021-2023, Marc S. Brooks (https://mbrooks.info)
+ *  Copyright 2021-2025, Marc S. Brooks (https://mbrooks.info)
  *  Licensed under the MIT license:
  *  http://www.opensource.org/licenses/mit-license.php
  */
