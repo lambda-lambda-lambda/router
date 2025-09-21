@@ -1,6 +1,6 @@
 # L³ router
 
-[![npm version](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter.svg)](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter) [![](https://img.shields.io/npm/dm/@lambda-lambda-lambda/router.svg)](https://www.npmjs.com/package/@lambda-lambda-lambda/router) [![Build Status](https://img.shields.io/github/actions/workflow/status/lambda-lambda-lambda/router/.github%2Fworkflows%2Fci.yml)](https://github.com/lambda-lambda-lambda/router/actions) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master) [![Install size](https://packagephobia.com/badge?p=@lambda-lambda-lambda/router)](https://packagephobia.com/result?p=@lambda-lambda-lambda/router)
+[![npm version](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter.svg)](https://badge.fury.io/js/@lambda-lambda-lambda%2Frouter) [![](https://img.shields.io/npm/dm/@lambda-lambda-lambda/router.svg)](https://www.npmjs.com/package/@lambda-lambda-lambda/router) [![Build Status](https://img.shields.io/github/actions/workflow/status/lambda-lambda-lambda/router/.github%2Fworkflows%2Fci.yml)](https://github.com/lambda-lambda-lambda/router/actions) [![Coverage](https://coveralls.io/repos/lambda-lambda-lambda/router/badge.svg?branch=master)](https://coveralls.io/r/lambda-lambda-lambda/router?branch=master) [![Install size](https://packagephobia.com/badge?p=@lambda-lambda-lambda/router)](https://packagephobia.com/result?p=@lambda-lambda-lambda/router) [![NO AI](https://raw.githubusercontent.com/nuxy/no-ai-badge/master/badge.svg)](https://github.com/nuxy/no-ai-badge)
 
 AWS [CloudFront Lambda@Edge](https://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html) serverless application router.
 
@@ -58,6 +58,16 @@ If you just looking to leverage the Request/Response handling [API](CommonMethod
 - [Middleware](https://github.com/lambda-lambda-lambda/manual/blob/master/Middleware.md)
 - [Developers](https://github.com/lambda-lambda-lambda/manual/blob/master/Developers.md)
 - [Testing](https://github.com/lambda-lambda-lambda/manual/blob/master/Testing.md)
+
+## AWS changes starting in Node.js 24 (CloudWatch warning)
+
+Going forward, it is recommended that you build your L³ application using `async` handlers in anticipation of the AWS changes below.
+
+> AWS Lambda plans to remove support for callback-based function handlers starting with Node.js 24. You will need to update this function to use an async handler to use Node.js 24 or later. For more information and to provide feedback on this change, see aws/aws-lambda-nodejs-runtime-interface-client#137
+
+While backwards compatibity will be supported for older Node.js releases this support **will eventually be phased out** with the deprecation of `nodejs22.x` (Apr 30, 2027).
+
+See [AWS Node.js Supported Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtimes-supported) for support information.
 
 ## Versioning
 
