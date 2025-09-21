@@ -34,7 +34,7 @@
     "chai-as-promised": "^7.1.2",
     "clean-jsdoc-theme": "^4.3.0",
     "clone": "^2.1.2",
-    "eslint": "^8.57.1",
+    "eslint": "^9.36.0",
     "jsdoc": "^4.0.4",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
