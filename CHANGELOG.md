@@ -78,3 +78,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 - Support `async` use in default() route
 - Replaced ESLint deprecated release
+
+## [0.8.8] - 2025-10-04
+
+- Removed JSDoc config from published release
