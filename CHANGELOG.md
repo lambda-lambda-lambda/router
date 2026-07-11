@@ -86,3 +86,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 ## [0.8.9] - 2026-04-14
 
 - Upgraded outdated NPM packages
+
+## [0.8.10] - 2026-07-11
+
+- Upgraded outdated NPM packages
+- NPM security updates
